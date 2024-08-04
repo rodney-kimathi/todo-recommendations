@@ -3,8 +3,8 @@ defmodule ExAssignment.Repo.Migrations.CreateTodos do
 
   def change do
     create table(:todos) do
-      add(:title, :string)
-      add(:priority, :integer)
+      add(:title, :string, null: false, size: 50)
+      add(:priority, :integer, null: false)
       add(:done, :boolean, default: false, null: false)
 
       timestamps()

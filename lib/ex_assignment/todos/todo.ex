@@ -15,5 +15,7 @@ defmodule ExAssignment.Todos.Todo do
     todo
     |> cast(attrs, [:title, :priority, :done])
     |> validate_required([:title, :priority, :done])
+    |> validate_length(:title, max: 50)
+    |> unique_constraint(:title)
   end
 end

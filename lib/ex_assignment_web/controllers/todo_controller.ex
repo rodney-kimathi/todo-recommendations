@@ -6,8 +6,9 @@ defmodule ExAssignmentWeb.TodoController do
   alias ExAssignment.Todos.Todo
 
   def index(conn, _params) do
-    open_todos = Todos.list_todos(:open)
-    done_todos = Todos.list_todos(:done)
+    todos = Todos.list_todos()
+    open_todos = Enum.filter(todos, &(not &1.done))
+    done_todos = Enum.filter(todos, &(&1.done))
     recommended_todo = RecommendationEngine.get_recommendation()
 
     render(conn, :index,
