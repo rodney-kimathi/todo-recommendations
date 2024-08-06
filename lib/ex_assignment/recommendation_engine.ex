@@ -18,7 +18,9 @@ defmodule ExAssignment.RecommendationEngine do
   defp generate_recommendation do
     Todos.list_todos(:open)
     |> case do
-      [] -> nil
+      [] ->
+        nil
+
       todos ->
         # The weight of each todo is calculated as the inverse of its priority
         # Lower priorities get higher values, which correspond to greater urgency
